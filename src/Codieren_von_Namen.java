@@ -18,6 +18,8 @@ public class Codieren_von_Namen {
             System.out.println("Geben Sie bitte eine Zahl an");
             int index = Integer.parseInt(br.readLine());
             isr.close();
+            //TO DO toLowerCase was sometime not Korrekt why??
+            name=name.toLowerCase();
             String outputString = caesar(name, index);
             System.out.println(outputString);
 
@@ -34,19 +36,19 @@ public class Codieren_von_Namen {
         char[] meinABC ={ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
         //gegebene Name in ein ArrayList speichern
-        name.toLowerCase();
+
         char[] charsName = name.toCharArray();
 
         //iterieren durch gegebenen Alphabet und Name
         for (int j = 0; j < charsName.length; j++){
             for(int i=0; meinABC.length>i; i++){
                 if(meinABC[i]==charsName[j]){
-                    //ein Kreis, damin wir nich gr??ere Zahl hatten als in Array Eintr?ge liegen
                     if((i+index)<meinABC.length){
                         caesarName=caesarName+meinABC[i+index];
                     }
+                    //TO DO after "circle" the Letters are in mirror order
                     else{
-                        caesarName=caesarName+meinABC[meinABC.length-i-index];
+                        caesarName=caesarName+meinABC[meinABC.length-(i+index)+index+1];
                     }
                 }
             }
