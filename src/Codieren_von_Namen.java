@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.security.SecureRandom;
 
 public class Codieren_von_Namen {
     public static void main(String[] args) {
@@ -21,7 +22,9 @@ public class Codieren_von_Namen {
             //TO DO toLowerCase was sometime not Korrekt why??
             name=name.toLowerCase();
             String outputString = caesar(name, index);
+            //String outputString = caesar(name, randomZahl());
             System.out.println(outputString);
+            System.out.println(randomZahl());
 
         }
         catch (Exception e){
@@ -36,7 +39,6 @@ public class Codieren_von_Namen {
         char[] meinABC ={ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
         //gegebene Name in ein ArrayList speichern
-
         char[] charsName = name.toCharArray();
 
         //iterieren durch gegebenen Alphabet und Name
@@ -46,9 +48,12 @@ public class Codieren_von_Namen {
                     if((i+index)<meinABC.length){
                         caesarName=caesarName+meinABC[i+index];
                     }
-                    //TO DO after "circle" the Letters are in mirror order
+                    //for last Letters, the circle
+                    else if((i+index)==meinABC.length){
+                        caesarName=caesarName+meinABC[meinABC.length-i-index];
+                    }
                     else{
-                        caesarName=caesarName+meinABC[meinABC.length-(i+index)+index+1];
+                        caesarName=caesarName+meinABC[(meinABC.length-(index+i))*(-1)];
                     }
                 }
             }
@@ -58,7 +63,11 @@ public class Codieren_von_Namen {
     }
 
 
-
+public static int randomZahl (){
+    SecureRandom random = new SecureRandom();
+    int i = random.nextInt();
+    return i;
+}
 
 
 }
