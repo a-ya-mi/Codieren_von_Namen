@@ -12,19 +12,20 @@ public class Codieren_von_Namen {
         InputStream is = System.in;
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
-        //name und Index f?r Codierung von Tastatur lesen
+        //name and Index(Key) from user
         try{
             System.out.println("Geben Sie bitte Ihre Name an");
             String name = br.readLine();
-            System.out.println("Geben Sie bitte eine Zahl an");
+            System.out.println("Geben Sie bitte eine Zahl zwischen 0 und 38 an");
             int index = Integer.parseInt(br.readLine());
             isr.close();
-            //TO DO toLowerCase was sometime not Korrekt why??
+
             name=name.toLowerCase();
-            String outputString = caesar(name, index);
+            String outputString = caesar(name, key);
+
+            //there are call with random Key
             //String outputString = caesar(name, randomZahl());
             System.out.println(outputString);
-            System.out.println(randomZahl());
 
         }
         catch (Exception e){
@@ -33,7 +34,7 @@ public class Codieren_von_Namen {
 
     }
 
-    public static String caesar(String name, int index){
+    public static String caesar(String name, int key){
         String caesarName="";
 
         char[] meinABC ={ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
@@ -45,15 +46,15 @@ public class Codieren_von_Namen {
         for (int j = 0; j < charsName.length; j++){
             for(int i=0; meinABC.length>i; i++){
                 if(meinABC[i]==charsName[j]){
-                    if((i+index)<meinABC.length){
-                        caesarName=caesarName+meinABC[i+index];
+                    if((i+key)<meinABC.length){
+                        caesarName=caesarName+meinABC[i+key];
                     }
                     //for last Letters, the circle
-                    else if((i+index)==meinABC.length){
-                        caesarName=caesarName+meinABC[meinABC.length-i-index];
+                    else if((i+key)==meinABC.length){
+                        caesarName=caesarName+meinABC[meinABC.length-i-key];
                     }
                     else{
-                        caesarName=caesarName+meinABC[(meinABC.length-(index+i))*(-1)];
+                        caesarName=caesarName+meinABC[(meinABC.length-(key+i))*(-1)];
                     }
                 }
             }
@@ -65,7 +66,9 @@ public class Codieren_von_Namen {
 
 public static int randomZahl (){
     SecureRandom random = new SecureRandom();
-    int i = random.nextInt();
+    //TODO java.security.SecureRandom can be much better
+    //39 bacause ofthe bag in Circle ((
+    int i = random.nextInt(39);
     return i;
 }
 
