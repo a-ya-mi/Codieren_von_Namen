@@ -11,7 +11,9 @@ import javax.swing.JLabel;
  */
 public class OurFrame extends JFrame {
     JLabel outputFromProgramm;
+    JButton buttonCheck;
     JButton buttonNewName;
+    JButton buttonLevelUp;
     JLabel inputGuessFromUser;
 
     public OurFrame() {
@@ -26,14 +28,28 @@ public class OurFrame extends JFrame {
         setLayout(null);
 
         outputFromProgramm = new JLabel("Here will be name");
-        outputFromProgramm.setBounds(120, 7, 500, 15);
+        outputFromProgramm.setBounds(120, 10, 500, 35);
         add(outputFromProgramm);
 
-        buttonNewName = new JButton("Guess one more name");
-        buttonNewName.setBounds(250, 10, 200, 20);
+        buttonCheck = new JButton("Klick and check your answer");
+        buttonCheck.setBounds(250, 10, 200, 25);
+        //xywh
+        buttonCheck.addActionListener(new OurListener());
+        add(buttonCheck);
+
+        buttonNewName = new JButton("Guess next name");
+        buttonNewName.setBounds(250, 40, 200, 25);
         //xywh
         buttonNewName.addActionListener(new OurListener());
         add(buttonNewName);
+
+
+        buttonLevelUp = new JButton("Next level");
+        buttonLevelUp.setBounds(250, 70, 200, 25);
+        //xywh
+        buttonLevelUp.addActionListener(new OurListener());
+        add(buttonLevelUp);
+
     }
 
     private class OurListener implements ActionListener {
