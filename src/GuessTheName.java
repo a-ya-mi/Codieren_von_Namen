@@ -84,7 +84,7 @@ public class GuessTheName extends JFrame{
 
 
     public static String randomNameForEncrypting(){
-        String[] arrayWithNames=new String[]{"Aksana", "Andreas", "Anna"};
+        String[] arrayWithNames=new String[]{"Aksana", "Anna", "Christofer", "Dominik", "Patrick"};
         //TODO read names from file
         /*try{
             BufferedReader in = new BufferedReader(new FileReader("names.txt"));
@@ -92,6 +92,8 @@ public class GuessTheName extends JFrame{
         catch(IOException e){
             System.out.println(e.getMessage());
         }*/
+
+        //TODO Level  up with integer parameter
         return arrayWithNames[randomZahl(arrayWithNames.length)].toLowerCase();
     }
 
