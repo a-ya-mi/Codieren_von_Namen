@@ -11,6 +11,7 @@ import java.io.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -27,8 +28,7 @@ public class GuessTheName extends JFrame{
 
                 //encrypting with caesar withthe random key
                 String nameWithCaesar = caesar(name, randomZahl());
-                System.out.println("Whhich name is ist?");
-                System.out.println(nameWithCaesar);
+                System.out.println("Whhich name is ist?  --- " + nameWithCaesar + " ---");
 
                 //name suggestion from user
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -84,17 +84,38 @@ public class GuessTheName extends JFrame{
 
 
     public static String randomNameForEncrypting(){
-        String[] arrayWithNames=new String[]{"Aksana", "Anna", "Christofer", "Dominik", "Patrick"};
-        //TODO read names from file
-        /*try{
-            BufferedReader in = new BufferedReader(new FileReader("names.txt"));
+        ArrayList<String> arrayWithNames = new ArrayList<String>();
+
+        String names="names.txt";
+        //TODO: some different files with differend Level, swich-case.
+
+        File file = new File(names);
+        BufferedReader br = null;
+
+        if (!file.canRead() || !file.isFile()) {
+            System.out.println("There is no file with names");
+        }
+
+        try{
+            br = new BufferedReader(new FileReader(names));
+            String line = null;
+                while ((line = br.readLine()) != null) {
+                    arrayWithNames.add(line);
+                }
         }
         catch(IOException e){
             System.out.println(e.getMessage());
-        }*/
+        }
+        finally {
+            if (br != null)
+                try {
+                    br.close();
+                } catch (IOException e) {
+                }
+        }
 
         //TODO Level  up with integer parameter
-        return arrayWithNames[randomZahl(arrayWithNames.length)].toLowerCase();
+        return arrayWithNames.get(randomZahl(arrayWithNames.size())).toLowerCase();
     }
 
 
