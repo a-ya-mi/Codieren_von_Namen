@@ -23,8 +23,8 @@ public class GuessTheName extends JFrame{
 
 
             try {
-                //random Name from Array (later from .txt)
-                String name=randomNameForEncrypting();
+                //random name with diffikult lavel 1
+                String name=randomNameForEncrypting(1);
 
                 //encrypting with caesar withthe random key
                 String nameWithCaesar = caesar(name, randomZahl());
@@ -83,11 +83,19 @@ public class GuessTheName extends JFrame{
     }
 
 
-    public static String randomNameForEncrypting(){
+    public static String randomNameForEncrypting(int level){
         ArrayList<String> arrayWithNames = new ArrayList<String>();
 
-        String names="names.txt";
-        //TODO: some different files with differend Level, swich-case.
+
+        //differend Level 1 for difficult and 2 for VERY difficult
+        String names="";
+        switch (level) {
+            case 1:
+                names = "names.txt";
+
+            case 2:
+                names = "namesDifficult.txt";
+        }
 
         File file = new File(names);
         BufferedReader br = null;
