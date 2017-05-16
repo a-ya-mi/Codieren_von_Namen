@@ -40,14 +40,12 @@ public class OurFrame extends JFrame {
         buttonNewName = new JButton("Guess next name");
         buttonNewName.setBounds(250, 40, 200, 25);
         //xywh
-        buttonNewName.addActionListener(new OurListener());
         add(buttonNewName);
 
 
         buttonLevelUp = new JButton("Next level");
         buttonLevelUp.setBounds(250, 70, 200, 25);
         //xywh
-        buttonLevelUp.addActionListener(new OurListener());
         add(buttonLevelUp);
 
     }
@@ -55,6 +53,7 @@ public class OurFrame extends JFrame {
     private class OurListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
+
             outputFromProgramm.setText("Right or not Right");
         }
 
