@@ -19,8 +19,9 @@ public class GuessTheName extends JFrame{
 
     public static void main(String  []args){
 
-            JFrame jf = new OurFrame();
-
+            //entweden JFrame (stillmuch to do) or simple version of Gui for play now
+            //JFrame jf = new OurFrame();
+            quicklyGui qGui = new quicklyGui();
 
             try {
                 //random name with diffikult lavel 1
@@ -28,17 +29,26 @@ public class GuessTheName extends JFrame{
 
                 //encrypting with caesar withthe random key
                 String nameWithCaesar = caesar(name, randomZahl());
-                System.out.println("Whhich name is ist?  --- " + nameWithCaesar + " ---");
 
-                //name suggestion from user
-                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                String nameTry = br.readLine();
+                qGui.dialog("Whhich name is ist?  --- " + nameWithCaesar + " ---");
+                //without GUI:
+                //System.out.println("Whhich name is ist?  --- " + nameWithCaesar + " ---");
 
+                //name suggestion from user without GUI:
+                //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                String nameTry;
+                // nameTry = br.readLine();
+
+                nameTry=qGui.inputGuess;
                 if (check(name, nameTry)==true){
-                    System.out.println("You are right!");
+                    //without GUI:
+                    // System.out.println("You are right!");
+                    qGui.message("You are right!");
                 }
                 else{
-                    System.out.println("You are wrong!");
+                    //without GUI:
+                    //System.out.println("You are wrong!");
+                    qGui.message("You are wrong!");
                 }
             }
             catch (Exception e){
