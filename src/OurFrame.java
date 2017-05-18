@@ -16,7 +16,9 @@ public class OurFrame extends JFrame {
     JTextField inputGuessFromUser;
     JButton buttonCheck;
     JButton buttonNewName;
+    JButton buttonLevelDown;
     JButton buttonLevelUp;
+    JPanel buttonsPanel;
 
 
     public OurFrame() {
@@ -53,10 +55,23 @@ public class OurFrame extends JFrame {
         add(buttonNewName);
 
 
-        buttonLevelUp = new JButton("Next level");
-        buttonLevelUp.setBounds(250, 70, 200, 25);
+        buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(null);
+        buttonsPanel.setBounds(10, 100, 200, 160);
+        add(buttonsPanel);
+
+        buttonLevelDown = new JButton("Level down");
+        buttonLevelDown.setBounds(10, 100, 100, 25);
         //xywh
-        add(buttonLevelUp);
+        buttonLevelDown.setToolTipText("schwer");
+        buttonsPanel.add(buttonLevelDown);
+
+        buttonLevelUp = new JButton("Level up");
+        buttonLevelUp.setBounds(100, 100, 100, 25);
+        //xywh
+        buttonLevelUp.setToolTipText("sehr schwer");
+        buttonsPanel.add(buttonLevelUp);
+
 
         setVisible(true);
     }
