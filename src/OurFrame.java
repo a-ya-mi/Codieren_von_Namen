@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
+import javax.swing.JOptionPane;
 
 /**
  * Created by Aksana on 11.05.2017.
@@ -23,6 +24,8 @@ public class OurFrame extends JFrame {
 
     public OurFrame() {
 
+
+
         setSize(500, 300);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +34,8 @@ public class OurFrame extends JFrame {
         setTitle("Guess the name");
         setResizable(false);
         setLayout(null);
+
+
 
         outputFromProgramm = new JLabel("Here will be name");
         outputFromProgramm.setBounds(20, 0, 200, 35);
@@ -57,7 +62,7 @@ public class OurFrame extends JFrame {
 
         buttonsPanel = new JPanel();
         buttonsPanel.setLayout(null);
-        buttonsPanel.setBounds(10, 100, 200, 160);
+        buttonsPanel.setBounds(10, 20, 200, 160);
         add(buttonsPanel);
 
         buttonLevelDown = new JButton("Level down");

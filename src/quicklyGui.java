@@ -6,8 +6,17 @@ import javax.swing.JOptionPane;
 public class quicklyGui {
     String inputGuess;
 
-     public quicklyGui() {
+     public void dialog() {
          inputGuess = JOptionPane.showInputDialog("Guess the name");
 
      }
+
+    public void dialog(String a) {
+        inputGuess = JOptionPane.showInputDialog(a);
+    }
+
+    public void message(String a) {
+        JOptionPane.showMessageDialog(null,a);
+    }
+
 }
