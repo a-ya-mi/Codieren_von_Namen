@@ -25,31 +25,39 @@ public class GuessTheName extends JFrame{
 
             try {
                 //random name with diffikult lavel 1
-                String name=randomNameForEncrypting(1);
+                String name=randomNameForEncrypting();
 
                 //encrypting with caesar withthe random key
                 String nameWithCaesar = caesar(name, randomZahl());
 
-                qGui.dialog("Whhich name is ist?  --- " + nameWithCaesar + " ---");
+                qGui.dialog("Whhich name is it?  --- " + nameWithCaesar + " ---");
                 //without GUI:
-                //System.out.println("Whhich name is ist?  --- " + nameWithCaesar + " ---");
+                //System.out.println("Whhich name is it?  --- " + nameWithCaesar + " ---");
 
                 //name suggestion from user without GUI:
                 //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 String nameTry;
                 // nameTry = br.readLine();
 
-                nameTry=qGui.inputGuess;
-                if (check(name, nameTry)==true){
-                    //without GUI:
-                    // System.out.println("You are right!");
-                    qGui.message("You are right!");
+                nameTry=qGui.inputGuess.toLowerCase();
+                boolean count = false;
+                while(count!=true){
+                       if (check(name, nameTry)==true){
+                            //without GUI:
+                            // System.out.println("You are right!");
+                            qGui.message("You are right!");
+                            count=true;
+                        }
+                        else{
+                           //without GUI:
+                           //System.out.println("You are wrng!");
+                           qGui.message("You are wrong!");
+                           qGui.dialog("One more try! --- " + nameWithCaesar + " ---");
+                           nameTry=qGui.inputGuess.toLowerCase();
+                           count=false;
+                        }
                 }
-                else{
-                    //without GUI:
-                    //System.out.println("You are wrong!");
-                    qGui.message("You are wrong!");
-                }
+
             }
             catch (Exception e){
                 System.out.println("Fehler in Main");
@@ -93,19 +101,11 @@ public class GuessTheName extends JFrame{
     }
 
 
-    public static String randomNameForEncrypting(int level){
+    public static String randomNameForEncrypting(){
         ArrayList<String> arrayWithNames = new ArrayList<String>();
 
 
-        //differend Level 1 for difficult and 2 for VERY difficult
-        String names="";
-        switch (level) {
-            case 1:
-                names = "names.txt";
-
-            case 2:
-                names = "namesDifficult.txt";
-        }
+        String names= "names.txt";
 
         File file = new File(names);
         BufferedReader br = null;
