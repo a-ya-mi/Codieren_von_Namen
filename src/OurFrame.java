@@ -13,15 +13,17 @@ import javax.swing.JOptionPane;
  * Created by Aksana on 11.05.2017.
  */
 public class OurFrame extends JFrame {
+    //Ausgabe
     JLabel outputFromProgramm;
+    //Eingabe
     JTextField inputGuessFromUser;
-    JButton buttonCheck;
-    JButton buttonNewName;
-    JButton buttonLevelDown;
-    JButton buttonLevelUp;
-    JPanel buttonsPanel;
+    //Button next Wort
+    JButton nextWort;
+    //Button hintPleas
+    JButton randomHint;
+    //Menu Zeile (mit Sprache, neues Kodieren Verfahren
 
-
+    
     public OurFrame() {
 
 
@@ -35,47 +37,28 @@ public class OurFrame extends JFrame {
         setResizable(false);
         setLayout(null);
 
-
-
         outputFromProgramm = new JLabel("Here will be name");
         outputFromProgramm.setBounds(20, 0, 200, 35);
         add(outputFromProgramm);
 
         inputGuessFromUser = new JTextField();
+        //eventbyEnter here TODO
         inputGuessFromUser.setBounds(20, 50, 200, 35);
         inputGuessFromUser.addCaretListener(new CursorInMove());
         add(inputGuessFromUser);
 
 
-        buttonCheck = new JButton("Klick and check your answer");
-        buttonCheck.setBounds(250, 10, 200, 25);
+        nextWort = new JButton("Next Wort");
+        nextWort.setBounds(250, 10, 200, 25);
         //xywh
-        buttonCheck.addActionListener(new OurListener());
-        buttonCheck.setEnabled(false);
-        add(buttonCheck);
+        nextWort.addActionListener(new OurListener());
+        add(nextWort);
 
-        buttonNewName = new JButton("Guess next name");
-        buttonNewName.setBounds(250, 40, 200, 25);
+        randomHint = new JButton("Random hint");
+        randomHint.setBounds(10, 100, 100, 25);
         //xywh
-        add(buttonNewName);
-
-
-        buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(null);
-        buttonsPanel.setBounds(10, 20, 200, 160);
-        add(buttonsPanel);
-
-        buttonLevelDown = new JButton("Level down");
-        buttonLevelDown.setBounds(10, 100, 100, 25);
-        //xywh
-        buttonLevelDown.setToolTipText("schwer");
-        buttonsPanel.add(buttonLevelDown);
-
-        buttonLevelUp = new JButton("Level up");
-        buttonLevelUp.setBounds(100, 100, 100, 25);
-        //xywh
-        buttonLevelUp.setToolTipText("sehr schwer");
-        buttonsPanel.add(buttonLevelUp);
+        randomHint.setEnabled(false);
+        randomHint.setToolTipText("schwer");
 
 
         setVisible(true);
@@ -94,10 +77,10 @@ public class OurFrame extends JFrame {
                 public void caretUpdate(CaretEvent arg0){
                     String s = inputGuessFromUser.getText();
                     if (s.isEmpty()){
-                        buttonCheck.setEnabled(false);
+                        randomHint.setEnabled(false);
                     }
                     else {
-                        buttonCheck.setEnabled(true);
+                        randomHint.setEnabled(true);
                     }
                 }
             }
