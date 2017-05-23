@@ -20,8 +20,8 @@ public class GuessTheName extends JFrame{
     public static void main(String  []args){
 
             //entweden JFrame (stillmuch to do) or simple version of Gui for play now
-            //JFrame jf = new OurFrame();
-            quicklyGui qGui = new quicklyGui();
+            JFrame jf = new OurFrame();
+            // quicklyGui qGui = new quicklyGui();
 
             try {
                 //random name with diffikult lavel 1
