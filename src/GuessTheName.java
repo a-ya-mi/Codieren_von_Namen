@@ -19,41 +19,31 @@ public class GuessTheName extends JFrame{
 
     public static void main(String  []args){
 
-            //entweden JFrame (stillmuch to do) or simple version of Gui for play now
-            JFrame jf = new OurFrame();
-            // quicklyGui qGui = new quicklyGui();
+            //JFrame jf = new OurFrame();
 
             try {
-                //random name with diffikult lavel 1
                 String name=randomNameForEncrypting();
 
-                //encrypting with caesar withthe random key
+                //encrypting with caesar with the random key
                 String nameWithCaesar = caesar(name, randomZahl());
 
-                qGui.dialog("Whhich name is it?  --- " + nameWithCaesar + " ---");
-                //without GUI:
-                //System.out.println("Whhich name is it?  --- " + nameWithCaesar + " ---");
+                System.out.println("Whhich name is it?  --- " + nameWithCaesar + " ---");
 
-                //name suggestion from user without GUI:
-                //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 String nameTry;
-                // nameTry = br.readLine();
+                nameTry = br.readLine();
+                nameTry.toLowerCase();
 
-                nameTry=qGui.inputGuess.toLowerCase();
                 boolean count = false;
                 while(count!=true){
                        if (check(name, nameTry)==true){
-                            //without GUI:
-                            // System.out.println("You are right!");
-                            qGui.message("You are right!");
+                            System.out.println("You are right!");
                             count=true;
                         }
                         else{
-                           //without GUI:
-                           //System.out.println("You are wrng!");
-                           qGui.message("You are wrong!");
-                           qGui.dialog("One more try! --- " + nameWithCaesar + " ---");
-                           nameTry=qGui.inputGuess.toLowerCase();
+                           System.out.println("One more try! --- " + nameWithCaesar + " ---");
+                           nameTry = br.readLine();
+                           nameTry.toLowerCase();
                            count=false;
                         }
                 }
