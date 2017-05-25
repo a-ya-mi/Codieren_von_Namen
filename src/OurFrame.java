@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -17,18 +17,17 @@ public class OurFrame extends JFrame {
     JLabel outputFromProgramm;
     //Eingabe
     JTextField inputGuessFromUser;
+    //count how many guesses
+    JLabel count;
     //Button next Wort
     JButton nextWort;
     //Button hintPleas
     JButton randomHint;
-    //Menu Zeile (mit Sprache, neues Kodieren Verfahren
 
-    
+
+    //Konstruktor
     public OurFrame() {
-
-
-
-        setSize(500, 300);
+        setSize(500, 250);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -38,28 +37,31 @@ public class OurFrame extends JFrame {
         setLayout(null);
 
         outputFromProgramm = new JLabel("Here will be name");
-        outputFromProgramm.setBounds(20, 0, 200, 35);
+        outputFromProgramm.setBounds(25, 10, 200, 35);
         add(outputFromProgramm);
 
-        inputGuessFromUser = new JTextField();
-        //eventbyEnter here TODO
-        inputGuessFromUser.setBounds(20, 50, 200, 35);
+        inputGuessFromUser = new JTextField(10);
+        //eventbyEntehere TODO
+        inputGuessFromUser.setBounds(20, 150, 200, 35);
         inputGuessFromUser.addCaretListener(new CursorInMove());
         add(inputGuessFromUser);
 
-
         nextWort = new JButton("Next Wort");
-        nextWort.setBounds(250, 10, 200, 25);
+        nextWort.setBounds(250, 20, 200, 25);
         //xywh
         nextWort.addActionListener(new OurListener());
         add(nextWort);
 
         randomHint = new JButton("Random hint");
-        randomHint.setBounds(10, 100, 100, 25);
+        randomHint.setBounds(250, 60, 200, 25);
         //xywh
         randomHint.setEnabled(false);
         randomHint.setToolTipText("schwer");
+        add(randomHint);
 
+        count = new JLabel("So many times you tried");
+        count.setBounds(250, 100, 200, 25);
+        add(count);
 
         setVisible(true);
     }
