@@ -19,12 +19,13 @@ public class GuessTheName extends JFrame{
 
     public static void main(String  []args){
 
-            //JFrame jf = new OurFrame();
+            JFrame jf = new OurFrame();
 
             try {
                 String name=randomNameForEncrypting();
 
-                //encrypting with caesar with the random key
+                //encrypting with caesar with
+                // the random key
                 String nameWithCaesar = caesar(name, randomZahl());
 
                 System.out.println("Whhich name is it?  --- " + nameWithCaesar + " ---");
