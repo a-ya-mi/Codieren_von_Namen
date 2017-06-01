@@ -82,12 +82,13 @@ public class OurFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
             String out = inputGuessFromUser.getText();
-
             boolean a = word.check(word.name, out);
-
+            int c = word.counter++;
+            count.setText("you have tried "+c+" times");
             outputFromProgramm2.setText(" "+a);
         }
     }
+
 
 
     private class NextWord implements ActionListener {
