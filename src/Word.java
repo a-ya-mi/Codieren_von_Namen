@@ -2,14 +2,15 @@ import java.io.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
+
+//TODO  getters and setters
 /**
  * Created by Aksana on 01.06.2017.
  */
 public class Word {
-     int counter;
+    int counter;
     String name;
     String nameWithCaesar;
-    String nameTry;
 
     public  Word() {
         counter = 0;
@@ -60,10 +61,6 @@ public class Word {
         //TODO java.security.SecureRandom can be much better
         int i = random.nextInt((Integer.MAX_VALUE-26));
         return i;
-    }
-
-    public int counterShow(){
-        return counter;
     }
 
 
