@@ -23,10 +23,12 @@ public class OurFrame extends JFrame {
     JButton nextWort;
     //Button hintPleas
     JButton randomHint;
-
+    Word word;
 
     //Konstruktor
     public OurFrame() {
+        word = new Word();
+
         setSize(500, 250);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,20 +38,22 @@ public class OurFrame extends JFrame {
         setResizable(false);
         setLayout(null);
 
-        outputFromProgramm = new JLabel("Here will be name");
+        outputFromProgramm = new JLabel("Look and guess");
         outputFromProgramm.setBounds(25, 10, 200, 35);
+       // outputFromProgramm.addActionListener()
         add(outputFromProgramm);
 
         inputGuessFromUser = new JTextField(10);
         //eventbyEntehere TODO
         inputGuessFromUser.setBounds(20, 150, 200, 35);
         inputGuessFromUser.addCaretListener(new CursorInMove());
+        inputGuessFromUser.addActionListener(new OurListener());
         add(inputGuessFromUser);
 
         nextWort = new JButton("Next Wort");
         nextWort.setBounds(250, 20, 200, 25);
         //xywh
-        nextWort.addActionListener(new OurListener());
+        nextWort.addActionListener(new NextWord());
         add(nextWort);
 
         randomHint = new JButton("Random hint");
@@ -70,9 +74,23 @@ public class OurFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
             String s = inputGuessFromUser.getText();
+            String a = word.gameAnswer(s);
+
+            outputFromProgramm.setText(a);
+        }
+    }
+
+
+    private class NextWord implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            word = new Word();
+            String s = word.nameWithCaesar;
             outputFromProgramm.setText(s);
         }
     }
+
+
 
  private class CursorInMove implements CaretListener {
                 @Override
