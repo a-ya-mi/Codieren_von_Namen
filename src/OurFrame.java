@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 public class OurFrame extends JFrame {
     //Ausgabe
     JLabel outputFromProgramm;
+    //Ausgabe 2
+    JLabel outputFromProgramm2;
     //Eingabe
     JTextField inputGuessFromUser;
     //count how many guesses
@@ -40,8 +42,14 @@ public class OurFrame extends JFrame {
 
         outputFromProgramm = new JLabel("Look and guess");
         outputFromProgramm.setBounds(25, 10, 200, 35);
+        //xywh
        // outputFromProgramm.addActionListener()
         add(outputFromProgramm);
+
+        outputFromProgramm2 = new JLabel("");
+        outputFromProgramm2.setBounds(25, 50, 200, 35);
+        // outputFromProgramm.addActionListener()
+        add(outputFromProgramm2);
 
         inputGuessFromUser = new JTextField(10);
         //eventbyEntehere TODO
@@ -73,10 +81,11 @@ public class OurFrame extends JFrame {
     private class OurListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            String s = inputGuessFromUser.getText();
-            String a = word.gameAnswer(s);
+            String out = inputGuessFromUser.getText();
 
-            outputFromProgramm.setText(a);
+            boolean a = word.check(word.name, out);
+
+            outputFromProgramm2.setText(" "+a);
         }
     }
 
