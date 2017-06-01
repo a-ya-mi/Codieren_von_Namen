@@ -22,7 +22,7 @@ public class Word {
 
     }
 
-    public String gameAnswer (String nameTry){
+    /*public String gameAnswer (String nameTry){
 
         try {
             //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -52,7 +52,7 @@ public class Word {
         }
 
         return "mistake2";
-    }
+    }*/
 
 
     public static int randomZahl (){
