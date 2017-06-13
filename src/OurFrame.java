@@ -40,13 +40,13 @@ public class OurFrame extends JFrame {
         setResizable(false);
         setLayout(null);
 
-        outputFromProgramm = new JLabel("Look and guess");
+        outputFromProgramm = new JLabel("Press any button to start");
         outputFromProgramm.setBounds(25, 10, 200, 35);
         //xywh
        // outputFromProgramm.addActionListener()
         add(outputFromProgramm);
 
-        outputFromProgramm2 = new JLabel("");
+        outputFromProgramm2 = new JLabel("Guess and press Enter");
         outputFromProgramm2.setBounds(25, 50, 200, 35);
         // outputFromProgramm.addActionListener()
         add(outputFromProgramm2);
@@ -68,7 +68,8 @@ public class OurFrame extends JFrame {
         randomHint.setBounds(250, 60, 200, 25);
         //xywh
         randomHint.setEnabled(false);
-        randomHint.setToolTipText("schwer");
+        randomHint.setToolTipText("the first letter");
+        randomHint.addActionListener(new HintListener());
         add(randomHint);
 
         count = new JLabel("So many times you tried");
@@ -86,6 +87,17 @@ public class OurFrame extends JFrame {
             int c = word.counter++;
             count.setText("you have tried "+c+" times");
             outputFromProgramm2.setText(" "+a);
+        }
+    }
+
+
+
+    private class HintListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String s = word.name;
+            s=s.substring(0,1);
+            outputFromProgramm2.setText("Hint: first letter is "+s);
         }
     }
 
