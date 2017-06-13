@@ -13,7 +13,7 @@ public class Word {
     String nameWithCaesar;
 
     public  Word() {
-        counter = 0;
+        counter = 1;
 
             name = randomNameForEncrypting();
 
