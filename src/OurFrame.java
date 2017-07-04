@@ -64,7 +64,7 @@ public class OurFrame extends JFrame {
         nextWort.addActionListener(new NextWord());
         add(nextWort);
 
-        randomHint = new JButton("Random hint");
+        randomHint = new JButton("Hint");
         randomHint.setBounds(250, 60, 200, 25);
         //xywh
         randomHint.setEnabled(false);
@@ -86,7 +86,11 @@ public class OurFrame extends JFrame {
             boolean a = word.check(word.name, out);
             int c = word.counter++;
             count.setText("you have tried "+c+" times");
-            outputFromProgramm2.setText(" "+a);
+            String strAnswer="You are wrong. You can try more";
+            if(a==true){
+                strAnswer="You are right";
+            }
+            outputFromProgramm2.setText(strAnswer);
         }
     }
 
