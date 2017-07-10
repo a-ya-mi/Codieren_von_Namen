@@ -1,4 +1,4 @@
-# Game with Caesar encoding with the random key and popular German names
+# Game with two encodings for popular German names
 
 ## Installation
 
