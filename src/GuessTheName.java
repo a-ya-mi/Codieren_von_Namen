@@ -7,10 +7,9 @@ import javax.swing.*;
 
 public class GuessTheName extends JFrame{
 
-
     public static void main(String  []args){
 
-            JFrame jf = new OurFrame();
+        JFrame jf = new OurFrame();
 
         }
 }
