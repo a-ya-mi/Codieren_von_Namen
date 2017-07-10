@@ -68,6 +68,7 @@ public class OurFrame extends JFrame {
 
         outputFromProgramm = new JLabel("");
         nextWort = new JButton();
+        outputFromProgramm2 = new JLabel("");
 
         setVisible(true);
     }
@@ -82,13 +83,13 @@ public class OurFrame extends JFrame {
         outputFromProgramm.setBounds(25, 10, 200, 35);
         add(outputFromProgramm);
 
-        outputFromProgramm2 = new JLabel("Guess and press Enter");
+        outputFromProgramm2.setText("Guess and press Enter");
         outputFromProgramm2.setBounds(25, 50, 200, 35);
         // outputFromProgramm.addActionListener()
         add(outputFromProgramm2);
 
-        inputGuessFromUser = new JTextField(10);
         //eventbyEntehere TODO
+        inputGuessFromUser = new JTextField(10);
         inputGuessFromUser.setBounds(20, 150, 200, 35);
         inputGuessFromUser.addCaretListener(new CursorInMove());
         inputGuessFromUser.addActionListener(new OurListener());
@@ -123,7 +124,7 @@ public class OurFrame extends JFrame {
         outputFromProgramm.setBounds(25, 10, 200, 35);
         add(outputFromProgramm);
 
-        outputFromProgramm2 = new JLabel("Guess and press Enter");
+        outputFromProgramm2.setText("Guess and press Enter");
         outputFromProgramm2.setBounds(25, 50, 200, 35);
         // outputFromProgramm.addActionListener()
         add(outputFromProgramm2);
