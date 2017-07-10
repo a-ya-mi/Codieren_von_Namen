@@ -9,6 +9,10 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.JOptionPane;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 /**
  * Created by Aksana on 11.05.2017.
  */
@@ -27,9 +31,26 @@ public class OurFrame extends JFrame {
     JButton randomHint;
     Word word;
 
+
+
+
     //Konstruktor
     public OurFrame() {
         word = new Word();
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("Game");
+
+        JMenu newGame = new JMenu("New game");
+        fileMenu.add(newGame);
+
+        JMenuItem guessTheName = new JMenuItem("Guess the name");
+        newGame.add(guessTheName);
+
+        JMenuItem guessTheNumber = new JMenuItem("Guess the number");
+        newGame.add(guessTheNumber);
+
+        menuBar.add(fileMenu);
 
         setSize(500, 250);
 
@@ -76,6 +97,7 @@ public class OurFrame extends JFrame {
         count.setBounds(250, 100, 200, 25);
         add(count);
 
+        setJMenuBar(menuBar);
         setVisible(true);
     }
 
