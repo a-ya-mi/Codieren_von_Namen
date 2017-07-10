@@ -36,7 +36,16 @@ public class OurFrame extends JFrame {
 
     //Konstruktor
     public OurFrame() {
-        word = new Word();
+        setTitle("Use menu to choose the game art");
+
+
+        setSize(500, 250);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        setLocation(500, 500);
+        setResizable(false);
+        setLayout(null);
 
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Game");
@@ -46,25 +55,31 @@ public class OurFrame extends JFrame {
 
         JMenuItem guessTheName = new JMenuItem("Guess the name");
         newGame.add(guessTheName);
+        guessTheName.addActionListener(new StartName());
 
-        JMenuItem guessTheNumber = new JMenuItem("Guess the number");
-        newGame.add(guessTheNumber);
+        JMenuItem guessTheName2 = new JMenuItem("Guess the name 2");
+        newGame.add(guessTheName2);
+        guessTheName2.addActionListener(new StartName2());
 
         menuBar.add(fileMenu);
 
-        setSize(500, 250);
+        setJMenuBar(menuBar);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setLocation(500, 500);
-        setTitle("Guess the name");
-        setResizable(false);
-        setLayout(null);
+        outputFromProgramm = new JLabel("");
+        nextWort = new JButton();
 
-        outputFromProgramm = new JLabel("Press any button to start");
+        setVisible(true);
+    }
+
+
+    private void GuessTheNameGUI(){
+        word = new Word();
+
+        this.setVisible(false);
+
+        outputFromProgramm.setText("Press any button to start");
         outputFromProgramm.setBounds(25, 10, 200, 35);
-        //xywh
-       // outputFromProgramm.addActionListener()
         add(outputFromProgramm);
 
         outputFromProgramm2 = new JLabel("Guess and press Enter");
@@ -79,7 +94,7 @@ public class OurFrame extends JFrame {
         inputGuessFromUser.addActionListener(new OurListener());
         add(inputGuessFromUser);
 
-        nextWort = new JButton("Next Wort");
+        nextWort.setText("Next Wort with Name1");
         nextWort.setBounds(250, 20, 200, 25);
         //xywh
         nextWort.addActionListener(new NextWord());
@@ -96,10 +111,67 @@ public class OurFrame extends JFrame {
         count = new JLabel("So many times you tried");
         count.setBounds(250, 100, 200, 25);
         add(count);
-
-        setJMenuBar(menuBar);
         setVisible(true);
     }
+
+    private void guessTheName2GUI(){
+        word = new Word();
+
+        this.setVisible(false);
+
+        outputFromProgramm.setText("Press any button to start");
+        outputFromProgramm.setBounds(25, 10, 200, 35);
+        add(outputFromProgramm);
+
+        outputFromProgramm2 = new JLabel("Guess and press Enter");
+        outputFromProgramm2.setBounds(25, 50, 200, 35);
+        // outputFromProgramm.addActionListener()
+        add(outputFromProgramm2);
+
+        inputGuessFromUser = new JTextField(10);
+        //eventbyEntehere TODO
+        inputGuessFromUser.setBounds(20, 150, 200, 35);
+        inputGuessFromUser.addCaretListener(new CursorInMove());
+        inputGuessFromUser.addActionListener(new OurListener());
+        add(inputGuessFromUser);
+
+        nextWort.setText("Next Wort with Name2!");
+        nextWort.setBounds(250, 20, 200, 25);
+        //xywh
+        nextWort.addActionListener(new NextWordName2());
+        add(nextWort);
+
+        randomHint = new JButton("Hint");
+        randomHint.setBounds(250, 60, 200, 25);
+        //xywh
+        randomHint.setEnabled(false);
+        randomHint.setToolTipText("the first letter");
+        randomHint.addActionListener(new HintListener());
+        add(randomHint);
+
+        count = new JLabel("So many times you tried");
+        count.setBounds(250, 100, 200, 25);
+        add(count);
+        setVisible(true);
+    }
+
+
+
+    private class StartName implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+                GuessTheNameGUI();
+            }
+    }
+
+
+    private class StartName2 implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            guessTheName2GUI();
+        }
+    }
+
 
     private class OurListener implements ActionListener {
         @Override
@@ -134,6 +206,16 @@ public class OurFrame extends JFrame {
         public void actionPerformed(ActionEvent actionEvent) {
             word = new Word();
             String s = word.nameWithCaesar;
+            outputFromProgramm.setText(s);
+        }
+    }
+
+
+    private class NextWordName2 implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            word = new Word();
+            String s = word.nameWithROT1;
             outputFromProgramm.setText(s);
         }
     }
