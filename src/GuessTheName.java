@@ -8,7 +8,7 @@ import javax.swing.*;
 public class GuessTheName extends JFrame{
 
     public static void main(String  []args){
-
+        //TO DO gui anders
         JFrame jf = new OurFrame();
 
         }
