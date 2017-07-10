@@ -11,6 +11,7 @@ public class Word {
     int counter;
     String name;
     String nameWithCaesar;
+    String nameWithROT1;
 
     public  Word() {
         counter = 1;
@@ -20,6 +21,7 @@ public class Word {
             //encrypting with caesar with
             // the random key
             nameWithCaesar = caesar(name, randomZahl());
+            nameWithROT1=theROT1(name);
 
     }
 
@@ -90,6 +92,26 @@ public class Word {
             }
         }
         return caesarName;
+    }
+
+    public static String theROT1(String name){
+        String nameWithROT1="";
+
+        char[] meinABC ={ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '};
+
+        //gegebene Name in ein ArrayList speichern
+        char[] charsName = name.toCharArray();
+
+        //iterieren durch gegebenen Alphabet und Name
+        for (int j = 0; j < charsName.length; j++){
+            for(int i=0; meinABC.length>i; i++){
+                if(meinABC[i]==charsName[j]){
+                    int k = (i+1)%meinABC.length;
+                    nameWithROT1=nameWithROT1+meinABC[k];
+                }
+            }
+        }
+        return nameWithROT1;
     }
 
 
